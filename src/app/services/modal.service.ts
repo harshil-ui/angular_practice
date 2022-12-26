@@ -11,23 +11,33 @@ interface Imodal {
 export class ModalService {
   visiblity = false;
 
-  private modal: Imodal[] = [];
+  private modals: Imodal[] = [];
 
   constructor() {
   }
 
   register(id: string) {
-    this.modal.push({
+    this.modals.push({
       id: id,
       visible: false
     });
   }
 
-  isModalOpen() {
-    return this.visiblity;
+  unregister(id: string) {
+    this.modals = this.modals.filter(elment => elment.id !== id);
   }
 
-  toggleModal() {
-    return this.visiblity = !this.visiblity;
+  isModalOpen(id: string): boolean {
+    // return !!this.modal.find(element => element.id === id)?.visible;
+    return Boolean(this.modals.find(element => element.id === id)?.visible);
+  }
+
+  toggleModal(id: string) {
+    // return this.visiblity = !this.visiblity;
+    const modal = this.modals.find(element => element.id === id);
+
+    if (modal) {
+      modal.visible = !modal.visible;
+    }
   }
 }
