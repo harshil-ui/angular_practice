@@ -10,17 +10,17 @@ import { ModalService } from './services/modal.service';
 export class AppComponent {
   title = 'clipz';
 
-  showModal: boolean = true;
+  // showModal: boolean = true;
 
   constructor(private modal: ModalService) { }
 
   ngOnInit() {
-    setInterval(
-      () => {
-        this.showModal = !this.showModal;
-        console.log(this.modal.modals);
+    // setInterval(
+    //   () => {
+    //     this.showModal = !this.showModal;
+    //     console.log(this.modal.modals);
 
-      },
-      1000);
+    //   },
+    //   1000);
   }
 }
