@@ -1,0 +1,37 @@
+<input [formControl]="control" class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition
+        duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400" [placeholder]="placeholder"
+    [type]="type" [mask]="format" [dropSpecialCharacters]="false"/>
+<!-- <p>{{registerForm.controls.name.errors | json}}</p> -->
+
+<ng-container *ngIf="control.touched && control.dirty ">
+    <p *ngIf="control.errors?.pattern" class="text-red-400">
+        Password must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number
+    </p>
+    <p *ngIf="control.errors?.required" class="text-red-400">
+        Field Is Required
+    </p>
+
+    <p *ngIf="control.errors?.minlength" class="text-red-400">
+        The Value You Inputed Is
+        {{control.errors?.minlength.actualLength}}
+        Character Long.
+        It Must Be At least
+        {{control.errors?.minlength.requiredLength}}
+        Characters Long
+    </p>
+
+    <p *ngIf="control.errors?.email" class="text-red-400">
+        You Must Enter Valid Email
+    </p>
+
+    <p *ngIf="control.errors?.min" class="text-red-400">
+        Value Is Too Low
+    </p>
+
+
+    <p *ngIf="control.errors?.max" class="text-red-400">
+        Value Is Too High
+    </p>
+
+    
+</ng-container>
